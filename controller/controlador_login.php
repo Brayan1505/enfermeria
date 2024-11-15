@@ -5,7 +5,8 @@ if(!empty($_POST["btningresar"])){
         $contrasena=$_POST["contrasena"];
         $sql=$conexion->query ("SELECT * FROM usuarios WHERE usuario='$usuario' AND contrasena='$contrasena'");
         if ($datos = $sql->fetch_object()) {
-            header("location: prueba.php");
+            //header("location: prueba.php");
+            header("location: AdminPa/dist/pages/index.php");
         } else {
             echo("<div class= 'alert alert-danger'> Acceso denegado</div>");
         }
