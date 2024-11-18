@@ -44,9 +44,9 @@ include "controller/controlador_login.php";
                     </div> <!--end::Row-->
                 </form>
                 <br>
-                <p class="mb-0"> <a href="register.html" class="text-center">
+                <!-- <p class="mb-0"> <a href="register.html" class="text-center">
                         Registrarse
-                    </a> </p>
+                    </a> </p> -->
             </div> <!-- /.login-card-body -->
         </div>
     </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->
