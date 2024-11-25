@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnGcambios'])) {
         }
 
         
-        header("Location: http://localhost/enfermeria/AdminPa/dist/pages/index.php mensaje=Perfil actualizado correctamente ");
+        header("Location: mensaje=Perfil actualizado correctamente ");
         exit(); // Terminar ejecución después de redirigir
     } else {
         header("Location: ../vista/perfil.php?error=No se pudo actualizar el perfil");
