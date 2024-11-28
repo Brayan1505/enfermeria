@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnGcambios'])) {
         if ($foto_binaria) {
             $_SESSION['foto'] = "data:image/jpeg;base64," . base64_encode($foto_binaria);
         }
-        header("Location: ../vista/perfil.php?mensaje=Perfil actualizado correctamente");
+        header("Location: ../AdminPa/dist/pages/index.php");
         exit(); 
     } else {
         header("Location: ../vista/perfil.php?error=No se pudo actualizar el perfil");

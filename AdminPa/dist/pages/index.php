@@ -48,7 +48,7 @@ if (empty($_SESSION['id'])) {
 </a>
 
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <!--begin::User Image-->
-                            <li class="user-header text-bg-primary"> <img src="" class="rounded-circle shadow" alt="">
+                            <li class="user-header text-bg-primary"> <img src="<?php echo isset($_SESSION['foto']) ? $_SESSION['foto'] : '../../dist/assets/img/default-image.jpg'; ?>" class="rounded-circle shadow" alt="">
                                 <p>
                                 <?php echo $_SESSION ["nombre"];?>
                                 </p>
