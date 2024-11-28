@@ -59,8 +59,8 @@ if (!isset($_SESSION['id'])) {
                 <label class="form-label">Foto de perfil actual:</label>
                 <div>
                     <img id="foto-actual" class="profile-img" 
-                         src="<?php echo $_SESSION['foto']; ?>" 
-                         alt="Foto de perfil">
+                        src="<?php echo isset($_SESSION['foto']) ? $_SESSION['foto'] : 'ruta/a/imagen/por-defecto.jpg'; ?>" 
+                        alt="Foto de perfil">
                 </div>
             </div>
 
@@ -69,6 +69,14 @@ if (!isset($_SESSION['id'])) {
                 <label for="foto" class="form-label">Nueva foto de perfil:</label>
                 <input type="file" name="foto" id="foto" class="form-control" accept="image/*" onchange="mostrarPrevisualizacion(event)">
             </div>
+
+            <script>
+                function mostrarPrevisualizacion(event) {
+                    const imgElement = document.getElementById('foto-actual');
+                    imgElement.src = URL.createObjectURL(event.target.files[0]);
+                }
+            </script>
+
 
             <!-- Previsualización -->
             <div id="preview-container" class="mb-3" style="display: none;">

@@ -1,9 +1,12 @@
 <?php
-function actualizarPerfil($conexion, $id, $nombre, $foto = null) {
-    if ($foto) {
-        $query = "UPDATE usuarios SET nombre='$nombre', foto='$foto' WHERE id='$id'";
+function actualizarPerfil($conexion, $id, $nombre, $foto_binaria = null) {
+    if ($foto_binaria) {
+        $query = $conexion->prepare("UPDATE usuarios SET nombre = ?, foto = ? WHERE id = ?");
+        $query->bind_param("sbi", $nombre, $foto_binaria, $id);
     } else {
-        $query = "UPDATE usuarios SET nombre='$nombre' WHERE id='$id'";
+        $query = $conexion->prepare("UPDATE usuarios SET nombre = ? WHERE id = ?");
+        $query->bind_param("si", $nombre, $id);
     }
-    return $conexion->query($query);
+    return $query->execute();
 }
+
