@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnGcambios'])) {
     $nuevo_nombre = $conexion->real_escape_string($_POST['nombre']);
     $foto_binaria = null;
 
-    // Validar si se ha subido un archivo
+    // Validación si se ha subido un archivo
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
         $extensiones_permitidas = ['jpg', 'jpeg', 'png', 'gif'];
         $tipo_archivo = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);

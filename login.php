@@ -16,10 +16,24 @@
     <link rel="stylesheet" href="AdminPa/dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
 </head> <!--end::Head--> <!--begin::Body-->
 
-<body class="login-page bg-body-secondary">
+<body class="login-page" style="background-image: url('../enfermeria/AdminPa/dist/assets/niñosRP.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
     <div class="login-box">
         
-        <div class="login-logo"> LOGIN ENFERMERIA</div> <!-- /.login-logo -->
+    <div class="login-logo">
+    <h1 style="color: rgb(255, 1, 221) !important; 
+           font-weight: 900 !important; 
+           font-size: 30px !important; 
+           text-align: center !important; 
+           font-family: Arial, sans-serif !important;">
+    LOGIN ENFERMERIA
+</h1>
+
+</div>
+
+
+
+
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Ingrese sus credenciales</p>
