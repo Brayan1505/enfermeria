@@ -59,8 +59,9 @@ if (!isset($_SESSION['id'])) {
                 <label class="form-label">Foto de perfil actual:</label>
                 <div>
                     <img id="foto-actual" class="profile-img" 
-                        src="<?php echo isset($_SESSION['foto']) ? $_SESSION['foto'] : 'ruta/a/imagen/por-defecto.jpg'; ?>" 
-                        alt="Foto de perfil">
+                    src="<?php echo isset($_SESSION['foto']) ? $_SESSION['foto'] : '../AdminPa/dist/assets/img/RP.png'; ?>" 
+                    alt="Foto de perfil">
+
                 </div>
             </div>
 

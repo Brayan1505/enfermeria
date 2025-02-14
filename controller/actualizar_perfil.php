@@ -25,9 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnGcambios'])) {
     // Actualizar perfil
     if (actualizarPerfil($conexion, $id, $nuevo_nombre, $foto_binaria)) {
         $_SESSION['nombre'] = $nuevo_nombre;
-        if ($foto_binaria) {
-            $_SESSION['foto'] = "data:image/jpeg;base64," . base64_encode($foto_binaria);
+        
+        // Recuperar la imagen después de actualizar
+        $stmt = $conexion->prepare("SELECT foto FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result($foto_blob);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($foto_blob) {
+            $_SESSION['foto'] = "data:image/jpeg;base64," . base64_encode($foto_blob);
         }
+
         header("Location: ../AdminPa/dist/pages/index.php");
         exit(); 
     } else {
@@ -38,6 +48,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnGcambios'])) {
     header("Location: ../vista/perfil.php?error=Acción no permitida");
     exit(); 
 }
-
-?>
-
