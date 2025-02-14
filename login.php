@@ -20,7 +20,13 @@
 
     <div class="login-box">
         
-    <div class="login-logo">
+ 
+
+</div>
+
+        <div class="card">
+            <div class="card-body login-card-body">
+            <div class="login-logo">
     <h1 style="color: rgb(255, 1, 221) !important; 
            font-weight: 900 !important; 
            font-size: 30px !important; 
@@ -28,15 +34,7 @@
            font-family: Arial, sans-serif !important;">
     LOGIN ENFERMERIA
 </h1>
-
-</div>
-
-
-
-
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Ingrese sus credenciales</p>
+                <h6><p class="login-box-msg">Ingrese sus credenciales</p></h6>
 <?php
 include "model/conexion.php";
 include "controller/controlador_login.php";
