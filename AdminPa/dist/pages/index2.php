@@ -18,7 +18,11 @@ if (empty($_SESSION['id'] )) {
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../dist/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
@@ -59,13 +63,13 @@ if (empty($_SESSION['id'] )) {
                                 <?php echo $_SESSION ["nombre"];?>
                                 </p>
                             </li> <!--end::User Image--> <!--begin::Menu Body-->
+                            
                             <li class="user-footer"> <a href="../../../views/perfil.php" class="btn btn-default btn-flat">Perfil</a> <a href="../../../controller/controlador_cerrar_sesion.php" class="btn btn-default btn-flat float-end">Salir</a> </li> <!--end::Menu Footer-->
                         </ul>
                     </li> <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
-       
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
             <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
@@ -86,12 +90,12 @@ if (empty($_SESSION['id'] )) {
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"> <a href="../pages/index2.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <li class="nav-item"> <a href="../pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                     <p>Ingresar Estudiantes</p>
                                 </a> </li>
                         </ul>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"> <a href="./pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <li class="nav-item"> <a href="./widgetS" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                     <p>Horas Sociales</p>
                                 </a> </li>
                         </ul>
@@ -122,9 +126,80 @@ if (empty($_SESSION['id'] )) {
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
+        
 
-        <main class="app-main"> <!--begin::App Content Header-->
-            <h4>hola mundo</h4>
+        <main class="app-main">
+            <br> <!--begin::App Content Header-->
+            <div class="container mt-4">
+                <h2 class="mb-4">Tabla Estudiantes</h2>
+                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Horas Sociales</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Brayan</td>
+                            <td>Torres</td>
+                            <td>10</td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Felipe</td>
+                            <td>Castro</td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Andres</td>
+                            <td>Paez</td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>pr</td>
+                            <td>@</td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    $("#searchInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#tableBody tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                        });
+                    });
+                });
+            </script>
+
         </main> <!--end::App Main--> <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline"><a href="https://www.reyespatria.edu.co/">Colegio Cooperativo Reyes Patria</a></div> <!--end::To the end--> <!--begin::Copyright--> <strong>
