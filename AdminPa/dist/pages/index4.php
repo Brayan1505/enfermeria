@@ -131,24 +131,24 @@ if (empty($_SESSION['id'] )) {
         <main class="app-main">
             <br> <!--begin::App Content Header-->
             <div class="container mt-4">
-                <h2 class="mb-4">Tabla Horas Sociales</h2>
+                <h2 class="mb-4">Tabla Insumos</h2>
+                <button type="button" class="btn btn-info">Agregar</button>
                 <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
                 
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombres</th>
-                            <th scope="col">Apellidos</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Horas Sociales</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
+                        
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Brayan</td>
-                            <td>Torres</td>
+                            <th scope="row">2</th>
+                            <td>Shampoo</td>
                             <td>10</td>
                             <td>
                                 <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
@@ -156,23 +156,18 @@ if (empty($_SESSION['id'] )) {
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Felipe</td>
-                            <td>Castro</td>
-                            <td></td>
+                            <th scope="row">3</th>
+                            <td>Jabón</td>
+                            <td>5</td>
                             <td>
                                 <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
                             </td>
                         </tr>
                         <tr>
-
-                        </tr>
-                        <tr>
                             <th scope="row">4</th>
-                            <td>pr</td>
-                            <td>@</td>
-                            <td></td>
+                            <td>Algodón</td>
+                            <td>2</td>
                             <td>
                                 <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>

@@ -91,7 +91,7 @@ if (empty($_SESSION['id'] )) {
                                 </a> </li>
                         </ul>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"> <a href="./pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <li class="nav-item"> <a href="../pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                     <p>Horas Sociales</p>
                                 </a> </li>
                         </ul>
@@ -104,7 +104,7 @@ if (empty($_SESSION['id'] )) {
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./layout/" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="../pages/index4.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Ingresar Insumos</p>
                                     </a> </li>
                             </ul>

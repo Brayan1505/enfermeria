@@ -90,12 +90,12 @@ if (empty($_SESSION['id'] )) {
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"> <a href="../pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <li class="nav-item"> <a href="../pages/index2.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                     <p>Ingresar Estudiantes</p>
                                 </a> </li>
                         </ul>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"> <a href="./widgetS" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <li class="nav-item"> <a href="../pages/index3.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                     <p>Horas Sociales</p>
                                 </a> </li>
                         </ul>
@@ -108,7 +108,7 @@ if (empty($_SESSION['id'] )) {
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./layout/" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="../pages/index4.php" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Ingresar Insumos</p>
                                     </a> </li>
                             </ul>
@@ -129,76 +129,133 @@ if (empty($_SESSION['id'] )) {
         
 
         <main class="app-main">
-            <br> <!--begin::App Content Header-->
-            <div class="container mt-4">
-                <h2 class="mb-4">Tabla Estudiantes</h2>
-                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
-                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombres</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Horas Sociales</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Brayan</td>
-                            <td>Torres</td>
-                            <td>10</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Felipe</td>
-                            <td>Castro</td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Andres</td>
-                            <td>Paez</td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>pr</td>
-                            <td>@</td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <br>
+    <h2 class="mb-4">Tabla Estudiantes</h2>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarModal" style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px">
+    AGREGAR
+    </button>
 
-            <script>
-                $(document).ready(function() {
-                    $("#searchInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#tableBody tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                        });
-                    });
+
+    <div class="container mt-4">
+        <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Grado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Felipe</td>
+                    <td>Castro</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Andres</td>
+                    <td>Paez</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>pr</td>
+                    <td>@</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="width: 500px; height: 350px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Agregar Estudiante</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="width: 500px; height: 450px;"> <!-- Aumenta la altura -->
+        <div class="modal-header">
+            <h5 class="modal-title">Agregar Estudiante</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+            <form id="formAgregar">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombres</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label for="horas" class="form-label">Horas Sociales</label>
+                    <input type="number" class="form-control" id="horas" required>
+                </div>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filtro de búsqueda
+        $(document).ready(function() {
+            $("#searchInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#tableBody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
-            </script>
+            });
+
+            // Agregar estudiante a la tabla
+            $("#formAgregar").submit(function(event) {
+                event.preventDefault();
+                var nombre = $("#nombre").val();
+                var apellido = $("#apellido").val();
+                var horas = $("#horas").val();
+
+                if (nombre && apellido && horas) {
+                    var newRow = `<tr>
+                        <th scope="row">#</th>
+                        <td>${nombre}</td>
+                        <td>${apellido}</td>
+                        <td>${horas}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>`;
+                    $("#tableBody").append(newRow);
+                    $("#agregarModal").modal('hide');
+                    $("#formAgregar")[0].reset();
+                }
+            });
+        });
+    </script>
 
         </main> <!--end::App Main--> <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->
