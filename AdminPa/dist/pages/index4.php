@@ -71,7 +71,7 @@ if (empty($_SESSION['id'] )) {
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="false">
@@ -129,64 +129,133 @@ if (empty($_SESSION['id'] )) {
         
 
         <main class="app-main">
-            <br> <!--begin::App Content Header-->
-            <div class="container mt-4">
-                <h2 class="mb-4">Tabla Insumos</h2>
-                <button type="button" class="btn btn-info">Agregar</button>
-                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
-                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Horas Sociales</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Shampoo</td>
-                            <td>10</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jabón</td>
-                            <td>5</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Algodón</td>
-                            <td>2</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <h2 class="mb-4">Tabla Insumos</h2>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarModal" 
+        style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px">
+        AGREGAR
+    </button>
 
-            <script>
-                $(document).ready(function() {
-                    $("#searchInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#tableBody tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                        });
-                    });
-                });
-            </script>
+    <div class="container mt-4">
+        <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Insumo</th>
+                    <th scope="col">Tamaño</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Horas Sociales</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Shampoo</td>
+                    <td>10</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody id="tableBody">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Algodón</td>
+                    <td>30</td>
+                    <td>20</td>
+                    <td>1</td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal de Agregar -->
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Insumo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAgregar">
+                        <div class="mb-3">
+                            <label for="insumo" class="form-label">Insumo</label>
+                            <input type="text" class="form-control" id="insumo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tamaño" class="form-label">Tamaño</label>
+                            <input type="number" class="form-control" id="tamaño" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horas" class="form-label">Horas Sociales</label>
+                            <input type="number" class="form-control" id="horas" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        // Filtro de búsqueda
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tableBody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        // Agregar insumo a la tabla
+        $("#formAgregar").submit(function (event) {
+            event.preventDefault();
+            
+            var insumo = $("#insumo").val();
+            var tamaño = $("#tamaño").val();
+            var cantidad = $("#cantidad").val();
+            var horas = $("#horas").val();
+
+            if (insumo && tamaño && cantidad && horas) {
+                var rowCount = $("#tableBody tr").length + 1;
+
+                var newRow = `<tr>
+                    <th scope="row">${rowCount}</th>
+                    <td>${insumo}</td>
+                    <td>${tamaño}</td>
+                    <td>${cantidad}</td>
+                    <td>${horas}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>`;
+
+                $("#tableBody").append(newRow);
+                $("#agregarModal").modal('hide');
+                $("#formAgregar")[0].reset();
+            }
+        });
+    });
+</script>
+
+    </script>
+            
 
         </main> <!--end::App Main--> <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->

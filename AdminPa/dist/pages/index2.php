@@ -150,7 +150,7 @@ if (empty($_SESSION['id'] )) {
             </thead>
             <tbody id="tableBody">
                 <tr>
-                    <th scope="row">2</th>
+                    <th scope="row">1</th>
                     <td>Felipe</td>
                     <td>Castro</td>
                     <td></td>
@@ -160,7 +160,7 @@ if (empty($_SESSION['id'] )) {
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">3</th>
+                    <th scope="row">2</th>
                     <td>Andres</td>
                     <td>Paez</td>
                     <td></td>
@@ -170,7 +170,7 @@ if (empty($_SESSION['id'] )) {
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">4</th>
+                    <th scope="row">3</th>
                     <td>pr</td>
                     <td>@</td>
                     <td></td>
