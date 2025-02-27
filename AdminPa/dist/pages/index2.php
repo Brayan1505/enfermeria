@@ -145,6 +145,7 @@ if (empty($_SESSION['id'] )) {
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Grado</th>
+                    <th scope="col">Horas Sociales</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -153,6 +154,7 @@ if (empty($_SESSION['id'] )) {
                     <th scope="row">1</th>
                     <td>Felipe</td>
                     <td>Castro</td>
+                    <td></td>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
@@ -164,6 +166,7 @@ if (empty($_SESSION['id'] )) {
                     <td>Andres</td>
                     <td>Paez</td>
                     <td></td>
+                    <td></td>
                     <td>
                         <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                         <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
@@ -173,6 +176,7 @@ if (empty($_SESSION['id'] )) {
                     <th scope="row">3</th>
                     <td>pr</td>
                     <td>@</td>
+                    <td></td>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
@@ -206,6 +210,10 @@ if (empty($_SESSION['id'] )) {
                 <div class="mb-3">
                     <label for="apellido" class="form-label">Apellidos</label>
                     <input type="text" class="form-control" id="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label for="grado" class="form-label">Grado</label>
+                    <input type="text" class="form-control" id="grado" required>
                 </div>
                 <div class="mb-3">
                     <label for="horas" class="form-label">Horas Sociales</label>
