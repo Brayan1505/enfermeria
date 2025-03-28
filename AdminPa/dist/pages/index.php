@@ -33,9 +33,6 @@ if (empty($_SESSION['id'] )) {
                     <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Home</a> </li>
                 </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
                 <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-                    
-                    
-                
                     </li> <!--end::Notifications Dropdown Menu--> <!--begin::Fullscreen Toggle-->
                     <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i> </a> </li> <!--end::Fullscreen Toggle--> <!--begin::User Menu Dropdown-->
                     <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> 
@@ -67,7 +64,7 @@ if (empty($_SESSION['id'] )) {
         </nav> <!--end::Header--> <!--begin::Sidebar-->
        
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="false">
@@ -124,7 +121,7 @@ if (empty($_SESSION['id'] )) {
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
         <main class="app-main"> <!--begin::App Content Header-->
-            <h4>hola mundo</h4>
+            <img src="../assets/rpcolegio.jpeg" alt="">
         </main> <!--end::App Main--> <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline"><a href="https://www.reyespatria.edu.co/">Colegio Cooperativo Reyes Patria</a></div> <!--end::To the end--> <!--begin::Copyright--> <strong>

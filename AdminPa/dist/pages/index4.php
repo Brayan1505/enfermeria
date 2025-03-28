@@ -129,88 +129,63 @@ if (empty($_SESSION['id'] )) {
         
 
         <main class="app-main">
-    <h2 class="mb-4">Tabla Insumos</h2>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarModal" 
-        style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px">
+            <br> <!--begin::App Content Header-->
+            <div style="display: flex; justify-content: center;">
+            <h2 class="mb-4">Tabla Insumos</h2>
+        </div>
+    <button type="button" class="btn btn-info" 
+        style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px" 
+        onclick="window.location.href='../../../views/Formularios/horasR.php'">
         AGREGAR
     </button>
-
+    <br>
+    <?php
+        include "../../../model/conexion.php";
+        include "../../../controller/eliminar_insumo.php";
+    ?>
     <div class="container mt-4">
         <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
-        
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Insumo</th>
-                    <th scope="col">Tamaño</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Horas Sociales</th>
+                    <th scope="col">Unidad de Medida</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
+                <?php
+                 
+                $sql = $conexion->query("SELECT * FROM insumos");
+                while($datos=$sql->fetch_object()){
+                ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Shampoo</td>
-                    <td>10</td>
-                    <td>50</td>
-                    <td>5</td>
+                    <th scope="row"><?= $datos->id?></th>
+                    <td><?= $datos->insumo ?></td>
+                    <td><?= $datos->cantidad ?></td>
+                    <td><?= $datos->unidad ?></td>
                     <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='../../../views/Formularios/horasE.php?id=<?= $datos->id?>'">
+                        <i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="if(eliminar()) { window.location.href='index4.php?id=<?= $datos->id ?>' }">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </td>
                 </tr>
-            </tbody>
-            <tbody id="tableBody">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Algodón</td>
-                    <td>30</td>
-                    <td>20</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
-
-    <!-- Modal de Agregar -->
-    <div class="modal fade" id="agregarModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Agregar Insumo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formAgregar">
-                        <div class="mb-3">
-                            <label for="insumo" class="form-label">Insumo</label>
-                            <input type="text" class="form-control" id="insumo" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tamaño" class="form-label">Tamaño</label>
-                            <input type="number" class="form-control" id="tamaño" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cantidad" class="form-label">Cantidad</label>
-                            <input type="number" class="form-control" id="cantidad" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="horas" class="form-label">Horas Sociales</label>
-                            <input type="number" class="form-control" id="horas" required>
-                        </div>
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+    <script>
+        function eliminar(){
+            var respuesta=confirm("Estas seguro de eliminar?");
+            return respuesta;
+        }
+    </script>
 
 <script>
     $(document).ready(function () {
@@ -220,36 +195,6 @@ if (empty($_SESSION['id'] )) {
             $("#tableBody tr").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
             });
-        });
-
-        // Agregar insumo a la tabla
-        $("#formAgregar").submit(function (event) {
-            event.preventDefault();
-            
-            var insumo = $("#insumo").val();
-            var tamaño = $("#tamaño").val();
-            var cantidad = $("#cantidad").val();
-            var horas = $("#horas").val();
-
-            if (insumo && tamaño && cantidad && horas) {
-                var rowCount = $("#tableBody tr").length + 1;
-
-                var newRow = `<tr>
-                    <th scope="row">${rowCount}</th>
-                    <td>${insumo}</td>
-                    <td>${tamaño}</td>
-                    <td>${cantidad}</td>
-                    <td>${horas}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>`;
-
-                $("#tableBody").append(newRow);
-                $("#agregarModal").modal('hide');
-                $("#formAgregar")[0].reset();
-            }
         });
     });
 </script>

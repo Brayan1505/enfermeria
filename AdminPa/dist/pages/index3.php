@@ -71,7 +71,7 @@ if (empty($_SESSION['id'] )) {
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="false">
@@ -129,58 +129,62 @@ if (empty($_SESSION['id'] )) {
         
 
         <main class="app-main">
+       
             <br> <!--begin::App Content Header-->
-            <div class="container mt-4">
-                <h2 class="mb-4">Tabla Horas Sociales</h2>
-                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
-                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombres</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Horas Sociales</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Brayan</td>
-                            <td>Torres</td>
-                            <td>10</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Felipe</td>
-                            <td>Castro</td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>pr</td>
-                            <td>@</td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div style="display: flex; justify-content: center;">
+            <h2 class="mb-4">Tabla Horas Sociales</h2>
+        </div>
+    <button type="button" class="btn btn-info" 
+        style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px" 
+        onclick="window.location.href='../../../views/Formularios/registroS.php'">
+        AGREGAR
+    </button>
+    <br>
+    <?php
+        include "../../../model/conexion.php";
+        include "../../../controller/eliminar_horas.php";
+    ?>
+    <div class="container mt-4">
+        <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre Insumo</th>
+                    <th scope="col">Cantidad de horas equivalentes</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <?php
+                 
+                $sql = $conexion->query("SELECT * FROM horas");
+                while($datos=$sql->fetch_object()){
+                ?>
+                <tr>
+                    <th scope="row"><?= $datos->id?></th>
+                    <td><?= $datos->insumo ?></td>
+                    <td><?= $datos->socialesh ?></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='../../../views/Formularios/editarS.php?id=<?= $datos->id?>'">
+                        <i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="if(eliminar()) { window.location.href='index3.php?id=<?= $datos->id ?>' }">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </td>
+                </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function eliminar(){
+            var respuesta=confirm("Estas seguro de eliminar?");
+            return respuesta;
+        }
+    </script>
 
             <script>
                 $(document).ready(function() {

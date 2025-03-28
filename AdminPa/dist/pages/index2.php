@@ -71,7 +71,7 @@ if (empty($_SESSION['id'] )) {
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/RP.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">ENFERMERIA</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="false">
@@ -129,13 +129,20 @@ if (empty($_SESSION['id'] )) {
         
 
         <main class="app-main">
-    <br>
-    <h2 class="mb-4">Tabla Estudiantes</h2>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarModal" style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px">
-    AGREGAR
+            <br> <!--begin::App Content Header-->
+            <div style="display: flex; justify-content: center;">
+            <h2 class="mb-4">Tabla Estudiantes</h2>
+        </div>
+    <button type="button" class="btn btn-info" 
+        style="width: 90px; height: 40px; text-align: center; padding: 0; margin-left: 13px" 
+        onclick="window.location.href='../../../views/Formularios/registroE.php'">
+        AGREGAR
     </button>
-
-
+    <br>
+    <?php
+        include "../../../model/conexion.php";
+        include "../../../controller/eliminar_estudiante.php";
+    ?>
     <div class="container mt-4">
         <input type="text" id="searchInput" class="form-control mb-4" placeholder="Buscar...">
         <table class="table table-striped">
@@ -145,125 +152,55 @@ if (empty($_SESSION['id'] )) {
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Grado</th>
+                    <th scope="col">Lugar</th>
                     <th scope="col">Horas Sociales</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
+                <?php
+                 
+                $sql = $conexion->query("SELECT * FROM estudiantes");
+                while($datos=$sql->fetch_object()){
+                ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Felipe</td>
-                    <td>Castro</td>
-                    <td></td>
-                    <td></td>
+                    <th scope="row"><?= $datos->id?></th>
+                    <td><?= $datos->nombres ?></td>
+                    <td><?= $datos->apellidos ?></td>
+                    <td><?= $datos->grado ?></td>
+                    <td><?= $datos->lugar ?></td>
+                    <td><?= $datos->horas ?></td>
                     <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='../../../views/Formularios/editarE.php?id=<?= $datos->id?>'">
+                        <i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="if(eliminar()) { window.location.href='index2.php?id=<?= $datos->id ?>' }">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Andres</td>
-                    <td>Paez</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>pr</td>
-                    <td>@</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="width: 500px; height: 350px;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Agregar Estudiante</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-<div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="width: 500px; height: 450px;"> <!-- Aumenta la altura -->
-        <div class="modal-header">
-            <h5 class="modal-title">Agregar Estudiante</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-            <form id="formAgregar">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="nombre" required>
-                </div>
-                <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellido" required>
-                </div>
-                <div class="mb-3">
-                    <label for="grado" class="form-label">Grado</label>
-                    <input type="text" class="form-control" id="grado" required>
-                </div>
-                <div class="mb-3">
-                    <label for="horas" class="form-label">Horas Sociales</label>
-                    <input type="number" class="form-control" id="horas" required>
-                </div>
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Filtro de búsqueda
-        $(document).ready(function() {
-            $("#searchInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#tableBody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
-            });
-
-            // Agregar estudiante a la tabla
-            $("#formAgregar").submit(function(event) {
-                event.preventDefault();
-                var nombre = $("#nombre").val();
-                var apellido = $("#apellido").val();
-                var horas = $("#horas").val();
-
-                if (nombre && apellido && horas) {
-                    var newRow = `<tr>
-                        <th scope="row">#</th>
-                        <td>${nombre}</td>
-                        <td>${apellido}</td>
-                        <td>${horas}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                        </td>
-                    </tr>`;
-                    $("#tableBody").append(newRow);
-                    $("#agregarModal").modal('hide');
-                    $("#formAgregar")[0].reset();
-                }
-            });
-        });
+        function eliminar(){
+            var respuesta=confirm("Estas seguro de eliminar?");
+            return respuesta;
+        }
     </script>
+
+            <script>
+                $(document).ready(function() {
+                    $("#searchInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#tableBody tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                        });
+                    });
+                });
+            </script>
 
         </main> <!--end::App Main--> <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->
